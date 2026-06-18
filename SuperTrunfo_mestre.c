@@ -185,29 +185,30 @@ int main() {
     }
 
     // SOMA DOS ATRIBUTOS
-    float somaCarta1 = valor1Carta1 + valor2Carta1;
-    float somaCarta2 = valor1Carta2 + valor2Carta2;
+float somaCarta1 = valor1Carta1 + valor2Carta1;
+float somaCarta2 = valor1Carta2 + valor2Carta2;
 
-    printf("\n=================================\n");
-    printf(" SOMA DOS ATRIBUTOS\n");
-    printf("=================================\n");
+// margem para comparação de float
+float tolerancia = 0.0001;
 
-    printf("%s: %.2f\n", pais1, somaCarta1);
-    printf("%s: %.2f\n", pais2, somaCarta2);
-
-    char *vencedor =
-        (somaCarta1 > somaCarta2) ? pais1 :
-        (somaCarta2 > somaCarta1) ? pais2 :
-        "Empate";
+char *vencedor =
+    (somaCarta1 > somaCarta2) ? pais1 :
+    (somaCarta2 > somaCarta1) ? pais2 :
+    "Empate";
 
     printf("\n=================================\n");
     printf(" RESULTADO FINAL\n");
     printf("=================================\n");
 
-    if (somaCarta1 == somaCarta2)
-        printf("EMPATE!\n");
-    else
-        printf("VENCEDOR DA RODADA: %s\n", vencedor);
+    if ((somaCarta1 - somaCarta2 < tolerancia) &&
+    (somaCarta2 - somaCarta1 < tolerancia))
+{
+    printf("EMPATE!\n");
+}
+else
+{
+    printf("VENCEDOR DA RODADA: %s\n", vencedor);
+}
 
     return 0;
 }
